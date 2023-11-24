@@ -96,14 +96,14 @@ Token *getToken(void)
     return getToken();
   case 1:
     return makeToken(TK_EOF, lineNo, colNo, currentChar);
-  case 2:
+  case 2: // CHAR_SPACE
     // TODO (Skip blanks)
     while (charCodes[currentChar] == CHAR_SPACE && currentChar != EOF)
     {
       readChar();
     }
     return makeToken(CHAR_SPACE, lineNo, colNo, currentChar);
-  case 3:
+  case 3: // CHAR_LETTER
     printf("%c", currentChar);
     // TODO Recognize Identifiers and keywords
     while (charCodes[currentChar] == CHAR_LETTER && currentChar != EOF)
@@ -127,7 +127,7 @@ Token *getToken(void)
   case 6:
     // TODO Keywords
     return makeToken1(TK_IDENT, lineNo, colNo-1);
-  case 7:
+  case 7: // CHAR_DIGIT
   // TODO  Numbers
   while (charCodes[currentChar] == CHAR_DIGIT && currentChar != EOF)
     {
@@ -154,7 +154,7 @@ Token *getToken(void)
   // TODO
   readChar();
     return makeToken1(SB_SLASH, lineNo, colNo - 1);
-  case 13:
+  case 13: //CHAR_LT
     readChar();
     if (charCodes[currentChar] == CHAR_EQ)
       state = 14;
