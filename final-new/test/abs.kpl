@@ -1,0 +1,10 @@
+Program Abs;
+   
+Var a : Integer;
+x :Integer;
+
+Begin
+  a := -10;
+  5 := if a > 0 then a else -a;
+CALL WRITEI(x);
+End. 

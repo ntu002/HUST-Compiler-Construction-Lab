@@ -45,10 +45,10 @@ struct ErrorMessage errors[29] = {
   {ERR_DUPLICATE_IDENT, "Duplicate identifier."},
   {ERR_TYPE_INCONSISTENCY, "Type inconsistency"},
   {ERR_PARAMETERS_ARGUMENTS_INCONSISTENCY, "The number of arguments and the number of parameters are inconsistent."},
-  {ERR_VARIABLE, "Left site can't have value"},
-    {ERR_MISS_RVALUE, "Missing right value"},
-    {ERR_MISS_LVALUE, "Missing left value"},
-    {ERR_INVALID_DOUBLE_VALUE, "Invalid double value"}
+  {ERR_VARIABLE, "Left site can't have value"}, // 
+    {ERR_MISS_RVALUE, "Missing right value"}, //
+    {ERR_MISS_LVALUE, "Missing left value"}, //
+    {ERR_INVALID_DOUBLE_VALUE, "Invalid double value"} //
 };
 
 void error(ErrorCode err, int lineNo, int colNo) {

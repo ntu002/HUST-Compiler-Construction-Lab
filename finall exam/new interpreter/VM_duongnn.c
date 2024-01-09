@@ -455,7 +455,7 @@ int run(void) {
   }// (ps == PS_ACTIVE)
 //  wprintw(win,"\nPress any key to exit...");
   printf("\nPress any key to exit...");
-  getch();
+  //getch();
 //  endwin();
   return ps;
 }

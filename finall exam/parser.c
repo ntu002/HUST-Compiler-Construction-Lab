@@ -436,6 +436,9 @@ Type* compileLValue(void) {
 
   return varType;
 }
+//
+//
+// hàm này để check 
 Object* compileLValueNoGenCode(){
   Object* obj;
   // Type* tempType;
@@ -460,6 +463,10 @@ Object* compileLValueNoGenCode(){
   }
   return obj;
 }
+
+//
+//
+//
 Type* compileLValueGenCode(Object *obj){
   Type* varType;
   switch(obj->kind){
@@ -486,6 +493,10 @@ Type* compileLValueGenCode(Object *obj){
   }
   return varType;
 }
+
+// 
+//
+
 void compileAssignSt(void) {
   Type* varType[20];
   Type* expType;
@@ -497,7 +508,7 @@ void compileAssignSt(void) {
   tempVarObj[0] = compileLValueNoGenCode();
 
   while(lookAhead->tokenType == SB_COMMA){
-      eat(SB_COMMA);
+      eat(SB_COMMA); // bỏ qua dấu , 
       if(lookAhead->tokenType != TK_IDENT){
         error(ERR_VARIABLE , currentToken->lineNo, currentToken->colNo);
       }
@@ -506,7 +517,7 @@ void compileAssignSt(void) {
   }
 
   int counterForExpression = 1;
-  eat(SB_ASSIGN);
+  eat(SB_ASSIGN); // bỏ qua dấu :=
   varType[counterForExpression - 1] = compileLValueGenCode(tempVarObj[counterForExpression -1]);
   expType = compileExpression();
   checkTypeEquality(varType[counterForExpression - 1], expType);
@@ -516,16 +527,17 @@ void compileAssignSt(void) {
     eat(SB_COMMA);
     counterForExpression++;
     if(counterForExpression > counterForVariables){
-      error(ERR_MISS_LVALUE,currentToken->lineNo, currentToken->colNo);
+      error(ERR_MISS_LVALUE,currentToken->lineNo, currentToken->colNo); // thiếu biến bên trái 
     }
     varType[counterForExpression -1] = compileLValueGenCode(tempVarObj[counterForExpression - 1]);
     expType = compileExpression();
-    checkTypeEquality(varType[counterForExpression-1], expType);
+    checkTypeEquality(varType[counterForExpression-1], expType); // kiểm tra xem 
     // genST();
   }
 
   if(counterForVariables > counterForExpression){
     error(ERR_MISS_RVALUE,currentToken->lineNo, currentToken->colNo);
+
   }
   int i;
   for (i=0;  i<counterForExpression; i++){
@@ -579,7 +591,11 @@ void compileIfSt(void) {
     updateFJ(fjInstruction, getCurrentCodeAddress());
   }
 }
+
 // new function
+//
+//
+//
 Type* compileIfAssignSt(void){
 
   Instruction* fjInstruction;
@@ -720,7 +736,7 @@ void compileArguments(ObjectNode* paramList) {
   case KW_END:
   case KW_ELSE:
   case KW_THEN:
-  case KW_RETURN:
+  case KW_RETURN: //  
     break;
   default:
     error(ERR_INVALID_ARGUMENTS, lookAhead->lineNo, lookAhead->colNo);
@@ -787,6 +803,9 @@ void compileCondition(void) {
 
 }
 
+//
+//
+//
 Type* compileExpression(void) {
   Type* type;
 
@@ -802,9 +821,9 @@ Type* compileExpression(void) {
     checkIntType(type);
     genNEG();
     break;
-  case KW_IF:
-    type = compileIfAssignSt();
-    break;
+  case KW_IF: //
+    type = compileIfAssignSt(); //
+    break; //
   default:
     type = compileExpression2();
   }
@@ -861,8 +880,8 @@ Type* compileExpression3(Type* argType1) {
   case SB_SEMICOLON:
   case KW_END:
   case KW_ELSE:
-  case KW_THEN:
-  case KW_RETURN:
+  case KW_THEN: //
+  case KW_RETURN: //
     resultType = argType1;
     break;
   default:
@@ -921,9 +940,9 @@ Type* compileTerm2(Type* argType1) {
   case SB_SEMICOLON:
   case KW_END:
   case KW_ELSE:
-  case KW_THEN:
-  case KW_RETURN:
-    resultType = argType1;
+  case KW_THEN: //
+  case KW_RETURN: //
+    resultType = argType1; //
     break;
   default:
     error(ERR_INVALID_TERM, lookAhead->lineNo, lookAhead->colNo);
@@ -946,8 +965,8 @@ Type* compileFactor(void) {
     type = charType;
     genLC(currentToken->value);
     break;
-  case KW_IF:
-    type = compileIfAssignSt();
+  case KW_IF: //
+    type = compileIfAssignSt(); //
     break;
   case TK_IDENT:
     eat(TK_IDENT);

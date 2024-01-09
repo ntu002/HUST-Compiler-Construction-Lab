@@ -32,7 +32,7 @@ struct {
   {"DO", KW_DO},
   {"FOR", KW_FOR},
   {"TO", KW_TO},
-  {"RETURN", KW_RETURN}
+  {"RETURN", KW_RETURN} // 
 };
 
 int keywordEq(char *kw, char *string) {
@@ -61,7 +61,7 @@ Token* makeToken(TokenType tokenType, int lineNo, int colNo) {
 
 char *tokenToString(TokenType tokenType) {
   switch (tokenType) {
-    case KW_RETURN: return "keyword RETURN";
+    case KW_RETURN: return "keyword RETURN"; // 
   case TK_NONE: return "None";
   case TK_IDENT: return "an identification";
   case TK_NUMBER: return "a number";

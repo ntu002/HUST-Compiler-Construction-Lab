@@ -1,0 +1,35 @@
+Program Swap;
+   
+Var x : Integer;
+	y:Integer;
+	z:Integer;
+	t:Integer;
+  d:Integer;
+
+Begin
+  x:=1;
+  y:=2;
+  z:=3;
+  t:=4;
+
+CALL WRITELN; CAll WRITEC('x'); CALL WRITEC('=');
+CALL WRITEI(x);
+CALL WRITELN; CAll WRITEC('y'); CALL WRITEC('=');
+CALL WRITEI(y);
+CALL WRITELN; CAll WRITEC('z'); CALL WRITEC('='); 
+CALL WRITEI(z);
+CALL WRITELN; CAll WRITEC('t'); CALL WRITEC('='); 
+CALL WRITEI(t);
+
+  x,y,z,t := y,z,t,x,x+y;
+
+CALL WRITELN;
+CALL WRITELN; CAll WRITEC('x'); CALL WRITEC('=');
+CALL WRITEI(x);
+CALL WRITELN; CAll WRITEC('y'); CALL WRITEC('=');
+CALL WRITEI(y);
+CALL WRITELN; CAll WRITEC('z'); CALL WRITEC('='); 
+CALL WRITEI(z);
+CALL WRITELN; CAll WRITEC('t'); CALL WRITEC('='); 
+CALL WRITEI(t);
+End. 

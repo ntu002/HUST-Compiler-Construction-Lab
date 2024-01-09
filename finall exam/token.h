@@ -11,7 +11,7 @@
 #define KEYWORDS_COUNT 21
 
 typedef enum {
-    KW_RETURN,
+    KW_RETURN, // 
   TK_NONE, TK_IDENT, TK_NUMBER, TK_CHAR, TK_EOF,
 
   KW_PROGRAM, KW_CONST, KW_TYPE, KW_VAR,

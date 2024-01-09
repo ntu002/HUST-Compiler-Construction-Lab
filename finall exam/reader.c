@@ -8,8 +8,8 @@
 #include "reader.h"
 
 FILE *inputStream;
-int lineNo, colNo;
-int currentChar;
+int lineNo, colNo; // lưu vị trí dòng, cột hiện tại trong file
+int currentChar; // lưu kí tự hiện tại được đọc từ file 
 
 int readChar(void) {
   currentChar = getc(inputStream);
